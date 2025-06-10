@@ -12,10 +12,12 @@ router.use('/admin/positions', require('./admin/position'));
 router.use('/admin/work-shifts', require('./admin/workShift'));
 router.use('/admin/announcements', require('./admin/announcement'));
 router.use('/admin/reports', require('./admin/report'));
+router.use('/admin/approvals', require('./admin/approval')); // TAMBAHAN
 
 // User routes
 router.use('/user/dashboard', require('./user/dashboard'));
 router.use('/user/profile', require('./user/profile'));
+router.use('/user/attendance', require('./user/attendance')); // TAMBAHAN
 router.use('/user/visits', require('./user/visit'));
 router.use('/user/entry-exit', require('./user/entryExit'));
 
@@ -37,11 +39,13 @@ router.get('/', (req, res) => {
         positions: 'CRUD /admin/positions',
         workShifts: 'CRUD /admin/work-shifts',
         announcements: 'CRUD /admin/announcements',
-        reports: 'GET /admin/reports/*'
+        reports: 'GET /admin/reports/*',
+        approvals: 'PATCH /admin/approvals/*'
       },
       user: {
         dashboard: 'GET /user/dashboard',
         profile: 'GET/PUT /user/profile',
+        attendance: 'POST /user/attendance/check-in|check-out',
         visits: 'CRUD /user/visits',
         entryExit: 'CRUD /user/entry-exit'
       }
